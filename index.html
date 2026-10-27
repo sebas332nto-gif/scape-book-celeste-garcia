@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celeste García — Scape Book</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">CELESTE GARCÍA</div>
+      <div class="status">
+        <span id="progressText">PÁGINA 1 / 43</span>
+        <span id="lockStatus">SISTEMA ACTIVO</span>
+      </div>
+    </header>
+
+    <main class="book-area">
+      <button class="nav-btn left" id="prevBtn" aria-label="Página anterior">‹</button>
+
+      <section class="book">
+        <div class="page-wrap" id="pageWrap">
+          <canvas id="pdfCanvas"></canvas>
+          <div id="interactiveLayer"></div>
+          <div id="feedback" class="feedback" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <button class="nav-btn right" id="nextBtn" aria-label="Página siguiente">›</button>
+    </main>
+
+    <footer class="bottombar">
+      <button id="firstBtn">⟪ INICIO</button>
+      <button id="solutionsBtn">SOLUCIONES</button>
+      <div class="page-input">
+        <label for="pageJump">IR A</label>
+        <input id="pageJump" type="number" min="1" max="43" value="1">
+        <button id="goBtn">OK</button>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

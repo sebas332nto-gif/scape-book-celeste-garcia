@@ -1,0 +1,237 @@
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #080b0d;
+  --panel: #11171b;
+  --line: #2f4249;
+  --text: #e7eeee;
+  --accent: #4ee6dc;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at center, #172126 0%, var(--bg) 65%);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button, input {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar, .bottombar {
+  background: rgba(8, 11, 13, .96);
+  border-color: var(--line);
+  border-style: solid;
+  padding: 12px 18px;
+}
+
+.topbar {
+  border-width: 0 0 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.status {
+  display: flex;
+  gap: 18px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  opacity: .8;
+}
+
+.book-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  min-height: 0;
+}
+
+.book {
+  width: min(78vw, 650px);
+  max-height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+}
+
+.page-wrap {
+  position: relative;
+  width: 100%;
+  box-shadow: 0 18px 55px rgba(0,0,0,.65);
+  background: #111;
+  line-height: 0;
+}
+
+#pdfCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#interactiveLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.interactive {
+  position: absolute;
+  pointer-events: auto;
+}
+
+.nav-btn {
+  width: 48px;
+  height: 64px;
+  border: 1px solid var(--line);
+  background: rgba(17, 23, 27, .9);
+  color: white;
+  font-size: 42px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.nav-btn:hover, .bottombar button:hover {
+  border-color: var(--accent);
+}
+
+.bottombar {
+  border-width: 1px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bottombar button {
+  background: #161f23;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.page-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.page-input label {
+  font-size: 12px;
+  opacity: .75;
+}
+
+.page-input input {
+  width: 58px;
+  background: #080b0d;
+  color: white;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.challenge-input {
+  width: 100%;
+  height: 44px;
+  border: 2px solid #a9b8ba;
+  background: rgba(0,0,0,.88);
+  color: white;
+  border-radius: 6px;
+  padding: 0 12px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: .08em;
+  outline: none;
+}
+
+.challenge-input:focus {
+  border-color: var(--accent);
+}
+
+.challenge-button {
+  margin-top: 7px;
+  width: 100%;
+  min-height: 40px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #061011;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.challenge-button:hover {
+  filter: brightness(1.08);
+}
+
+.challenge-select {
+  width: 100%;
+  min-height: 44px;
+  border: 2px solid #a9b8ba;
+  background: rgba(0,0,0,.9);
+  color: white;
+  border-radius: 6px;
+  padding: 0 10px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.feedback {
+  position: absolute;
+  left: 50%;
+  bottom: 3.5%;
+  transform: translateX(-50%);
+  width: min(82%, 500px);
+  padding: 10px 14px;
+  border-radius: 7px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.25;
+  display: none;
+  z-index: 20;
+  background: rgba(0,0,0,.9);
+  border: 1px solid var(--accent);
+}
+
+.feedback.show {
+  display: block;
+}
+
+.feedback.error {
+  border-color: #ff7676;
+}
+
+.locked {
+  opacity: .45;
+}
+
+@media (max-width: 700px) {
+  .book-area { padding: 8px; }
+  .book { width: 90vw; }
+  .nav-btn { width: 38px; height: 52px; font-size: 34px; }
+  .status { display: none; }
+  .topbar { justify-content: center; }
+}
